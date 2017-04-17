@@ -6,7 +6,6 @@ var Conversation = require('watson-developer-cloud/conversation/v1'); // watson 
 var cfenv = require('cfenv');
 var appEnv = cfenv.getAppEnv();
 var path    = require("path");
-var fs     = require('fs');
 
 var app = express();
 app.set('title','Automated Vehicle Diagnosis');
@@ -105,4 +104,11 @@ function updateMessage(input, response) {
   return response;
 }
 
-module.exports = app;
+//Speech To Text
+/*var speech = new Speech.SpeechToText({
+	  watsonTokenUrl: '/api/speech-to-text/token'
+});*/
+/////////
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use('/api/speech-to-text/', require('./stt-token.js'));

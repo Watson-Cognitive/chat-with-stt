@@ -223,6 +223,21 @@ var ConversationPanel = (function() {
       // Clear input box for further messages
       inputBox.value = '';
       Common.fireEvent(inputBox, 'input');
-    }
+    }else if (event == 13 && inputBox.value) {
+        // Retrieve the context from the previous server response
+        var context;
+        var latestResponse = Api.getResponsePayload();
+        if (latestResponse) {
+          context = latestResponse.context;
+        }
+
+        // Send the user message
+        Api.sendRequest(inputBox.value, context);
+
+        // Clear input box for further messages
+        inputBox.value = '';
+        //Common.fireEvent(inputBox, 'input');
+      }
+    
   }
 }());
