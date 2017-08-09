@@ -19,6 +19,8 @@ function listen() {
         onEnd: function(e) {
             console.log('onEnd Speech event', e);
             stopListening();
+            document.getElementById("micButton").src="img/mic_small.png";
+        	ConversationPanel.inputKeyDown(13, document.getElementById("textInput"));
         }
     });
 }
@@ -27,7 +29,7 @@ function startListening() {
     if (activeSTT) {
     	stopListening();
     	document.getElementById("micButton").src="img/mic_small.png";
-    	ConversationPanel.inputKeyDown(13, document.getElementById("textInput"))
+    	ConversationPanel.inputKeyDown(13, document.getElementById("textInput"));
     } else if (speech.isSupported) {
     	document.getElementById("micButton").src="img/watson.gif";
         listen();

@@ -56,6 +56,7 @@ var ConversationPanel = (function() {
     var maxFontSize = 18;
     var minPadding = 4;
     var maxPadding = 6;
+    input.focus();
 
     // If no dummy input box exists, create one
     if (dummy === null) {
